@@ -26,6 +26,8 @@
 		7B8F30551E84151300110AEC /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8F2FD61E840F3600110AEC /* libReact.a */; };
 		7B8F30561E84151300110AEC /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8F2FC91E840F1A00110AEC /* libReactNativeNavigation.a */; };
 		7B8F30571E84151300110AEC /* libyoga.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8F2FDA1E840F3600110AEC /* libyoga.a */; };
+		A5E838D71FF829A500F5F895 /* NativeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E838D51FF829A500F5F895 /* NativeViewController.m */; };
+		A5E838D81FF829A500F5F895 /* NativeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E838D61FF829A500F5F895 /* NativeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +220,20 @@
 			remoteGlobalIDString = 2D2A28881D9B049200D4039D;
 			remoteInfo = "RCTWebSocket-tvOS";
 		};
+		A5E838EC1FF829A600F5F895 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B8F30401E8412E100110AEC /* RCTWebSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DBE0D001F3B181A0099AA32;
+			remoteInfo = fishhook;
+		};
+		A5E838EE1FF829A600F5F895 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B8F30401E8412E100110AEC /* RCTWebSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DBE0D0D1F3B181C0099AA32;
+			remoteInfo = "fishhook-tvOS";
+		};
 		E8CB6AA71FF10BC4007C82EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7B8F2FCA1E840F3600110AEC /* React.xcodeproj */;
@@ -268,6 +284,9 @@
 		7B8F30311E8412A600110AEC /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		7B8F303A1E8412B700110AEC /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
 		7B8F30401E8412E100110AEC /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
+		A5E838D41FF829A500F5F895 /* NativeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeViewController.h; sourceTree = "<group>"; };
+		A5E838D51FF829A500F5F895 /* NativeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeViewController.m; sourceTree = "<group>"; };
+		A5E838D61FF829A500F5F895 /* NativeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NativeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +324,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				A5E838D41FF829A500F5F895 /* NativeViewController.h */,
+				A5E838D51FF829A500F5F895 /* NativeViewController.m */,
+				A5E838D61FF829A500F5F895 /* NativeViewController.xib */,
 			);
 			path = playground;
 			sourceTree = "<group>";
@@ -420,6 +442,8 @@
 			children = (
 				7B8F30461E8412E100110AEC /* libRCTWebSocket.a */,
 				7B8F30481E8412E100110AEC /* libRCTWebSocket-tvOS.a */,
+				A5E838ED1FF829A600F5F895 /* libfishhook.a */,
+				A5E838EF1FF829A600F5F895 /* libfishhook-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -756,6 +780,20 @@
 			remoteRef = 7B8F30471E8412E100110AEC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		A5E838ED1FF829A600F5F895 /* libfishhook.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libfishhook.a;
+			remoteRef = A5E838EC1FF829A600F5F895 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A5E838EF1FF829A600F5F895 /* libfishhook-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libfishhook-tvOS.a";
+			remoteRef = A5E838EE1FF829A600F5F895 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E8CB6AA81FF10BC4007C82EF /* libthird-party.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -793,6 +831,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				A5E838D81FF829A500F5F895 /* NativeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,6 +861,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				A5E838D71FF829A500F5F895 /* NativeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
