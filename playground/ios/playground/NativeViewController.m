@@ -7,31 +7,35 @@
 //
 
 #import "NativeViewController.h"
+#import "ReactNativeNavigation/ReactNativeNavigation.h"
 
 @interface NativeViewController ()
+
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+
+@property (nonatomic, copy) NSString *containerId;
+@property (nonatomic, copy) NSDictionary *props;
 
 @end
 
 @implementation NativeViewController
 
++ (instancetype)initWithContainerId:(NSString *)containerId andProps:(NSDictionary *)props {
+	NativeViewController *instance = [[self alloc] initWithNibName:@"NativeViewController" bundle:nil];
+	instance.containerId = containerId;
+	instance.props = props;
+
+	return instance;
+}
+
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	[super viewDidLoad];
+	
+	self.titleLabel.text = self.props[@"title"];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)fockinfock:(id)sender {
+	[ReactNativeNavigation push:self.containerId layout:@{@"name": @"navigation.playground.PushedScreen"} onTopOf:self];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ReactNativeNavigation/ComponentViewController.h>
 
-@interface NativeViewController : UIViewController
+@interface NativeViewController : UIViewController <ComponentViewController>
 
 @end

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NativeViewController">
             <connections>
+                <outlet property="titleLabel" destination="4w9-Ny-aNQ" id="lS0-rj-90z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,12 +27,32 @@
                     <color key="textColor" red="1" green="0.9811031053" blue="0.43168921539999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRe-8Q-pjq">
+                    <rect key="frame" x="118.5" y="398.5" width="137" height="30"/>
+                    <state key="normal">
+                        <attributedString key="attributedTitle">
+                            <fragment content="Push JS component">
+                                <attributes>
+                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <font key="NSFont" metaFont="system" size="15"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    <integer key="NSUnderline" value="1"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
+                    <connections>
+                        <action selector="fockinfock:" destination="-1" eventType="touchUpInside" id="TYA-2s-BKq"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.26666668059999998" blue="0.24313725529999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="dRe-8Q-pjq" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="80" id="4zF-10-xGA"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="4w9-Ny-aNQ" secondAttribute="trailing" id="7HO-86-OwJ"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="4w9-Ny-aNQ" secondAttribute="bottom" id="POb-OT-ESG"/>
                 <constraint firstItem="4w9-Ny-aNQ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="YGX-dc-ZwI"/>
+                <constraint firstItem="dRe-8Q-pjq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aYp-9T-81R"/>
                 <constraint firstItem="4w9-Ny-aNQ" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="quz-di-fr7"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
