@@ -24,10 +24,22 @@
 	RNNCommandsHandler* _commandsHandler;
 }
 
+static NSDictionary* _nativeScreens = nil;
+
 # pragma mark - public API
 
 +(void)bootstrap:(NSURL *)jsCodeLocation launchOptions:(NSDictionary *)launchOptions {
 	[[ReactNativeNavigation sharedInstance] bootstrap:jsCodeLocation launchOptions:launchOptions];
+}
+
++(void)bootstrap:(NSURL*)jsCodeLocation launchOptions:(NSDictionary *)launchOptions nativeScreens:(NSDictionary *)nativeScreens {
+	ReactNativeNavigation *navigation = [ReactNativeNavigation sharedInstance];
+	[navigation bootstrap:jsCodeLocation launchOptions:launchOptions];
+	_nativeScreens = nativeScreens;
+}
+
++(NSDictionary<NSString *, Class<ComponentViewController>> *)nativeScreens {
+	return _nativeScreens;
 }
 
 # pragma mark - instance
