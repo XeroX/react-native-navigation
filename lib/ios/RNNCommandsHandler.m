@@ -55,11 +55,17 @@
 }
 
 -(void) push:(NSString*)containerId layout:(NSDictionary*)layout completion:(RNNTransitionCompletionBlock)completion {
-	[self assertReady];
-	UIViewController *newVc = [_controllerFactory createLayoutAndSaveToStore:layout];
-	UIViewController *fromVc = [_store findContainerForId:containerId];
-	[_bridge.uiManager setAvailableSize:fromVc.view.bounds.size forRootView:newVc.view];
-	[_navigationStackManager push:newVc onTop:containerId completion:completion];
+	//TODO: Checkin raw strings looks bad
+	if ([layout[@"type"] isEqualToString:@"Native"]) {
+		UIViewController *newVc = [_controllerFactory createLayoutAndSaveToStore:layout];
+		[_navigationStackManager pushNativeController:newVc onTop:containerId completion:completion];
+	} else {
+		[self assertReady];
+		UIViewController *newVc = [_controllerFactory createLayoutAndSaveToStore:layout];
+		UIViewController *fromVc = [_store findContainerForId:containerId];
+		[_bridge.uiManager setAvailableSize:fromVc.view.bounds.size forRootView:newVc.view];
+		[_navigationStackManager push:newVc onTop:containerId completion:completion];
+	}
 }
 
 -(void)pop:(NSString*)containerId options:(NSDictionary*)options completion:(RNNTransitionCompletionBlock)completion {

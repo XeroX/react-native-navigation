@@ -107,4 +107,27 @@ dispatch_queue_t RCTGetUIManagerQueue(void);
 	}
 }
 
+- (void)pushNativeController:(UIViewController *)newTop onTop:(NSString*)containerId completion:(RNNTransitionCompletionBlock)completion {
+	UIViewController *vc = [_store findContainerForId:containerId];
+	
+	//TODO: Add isAnimated
+	id<UINavigationControllerDelegate> newTopRootView = (id<UINavigationControllerDelegate>)newTop;
+	vc.navigationController.delegate = newTopRootView;
+	
+	[CATransaction begin];
+	[CATransaction setCompletionBlock:^{
+		if (_completionBlock) {
+			_completionBlock();
+			_completionBlock = nil;
+		}
+	}];
+	
+	//TODO: Hacky cast right here! DANGER!!!
+	self.toVC = (RNNRootViewController *)newTop;
+	self.fromVC = vc;
+	
+	[self.fromVC.navigationController pushViewController:self.toVC animated:YES];
+	[CATransaction commit];
+}
+
 @end

@@ -15,4 +15,6 @@
 -(void)popTo:(NSString*)containerId;
 -(void)popToRoot:(NSString*)containerId;
 
+- (void)pushNativeController:(UIViewController *)newTop onTop:(NSString*)containerId completion:(RNNTransitionCompletionBlock)completion;
+
 @end
