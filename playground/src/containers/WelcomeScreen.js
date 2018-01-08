@@ -23,6 +23,7 @@ class WelcomeScreen extends Component {
     this.onClickPushOrientationMenuScreen = this.onClickPushOrientationMenuScreen.bind(this);
     this.onClickBackHandler = this.onClickBackHandler.bind(this);
     this.onClickPushTopTabsScreen = this.onClickPushTopTabsScreen.bind(this);
+    this.onClickPushNativeScreen = this.onClickPushNativeScreen.bind(this);
   }
 
   render() {
@@ -39,6 +40,7 @@ class WelcomeScreen extends Component {
         <Button title="Show Modal" testID={testIDs.SHOW_MODAL_BUTTON} onPress={this.onClickShowModal} />
         <Button title="Show Redbox" testID={testIDs.SHOW_REDBOX_BUTTON} onPress={this.onClickShowRedbox} />
         <Button title="Orientation" testID={testIDs.ORIENTATION_BUTTON} onPress={this.onClickPushOrientationMenuScreen} />
+        <Button title="Native Screen" testID={testIDs.NATIVE_SCREEN} onPress={this.onClickPushNativeScreen} />
         <Text style={styles.footer}>{`this.props.containerId = ${this.props.containerId}`}</Text>
       </View>
     );
@@ -219,6 +221,17 @@ class WelcomeScreen extends Component {
     Navigation.push(this.props.containerId, {
       name: 'navigation.playground.OrientationSelectScreen'
     });
+  }
+
+  onClickPushNativeScreen() {
+    Navigation.push(this.props.containerId, {
+      native: {
+        name: 'NativeScreen',
+        passProps: {
+          title: 'IT WORKS!'
+        }
+      }
+    })
   }
 }
 
