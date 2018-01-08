@@ -12,4 +12,7 @@
 //TODO: This should be moved into some `storage`
 +(NSDictionary<NSString *, Class<ComponentViewController>> *)nativeScreens;
 
+//TODO: add completion block & move out of here
++(void)push:(NSString *)containerId layout:(NSDictionary *)layout onTopOf:(id<ComponentViewController>)vc;
+
 @end

@@ -42,6 +42,30 @@ static NSDictionary* _nativeScreens = nil;
 	return _nativeScreens;
 }
 
+//TODO: Add completion block
++(void)push:(NSString *)containerId layout:(NSDictionary *)layout onTopOf:(id<ComponentViewController>)vc {
+	//TODO: Extract into `layout parser`
+	NSAssert(layout[@"native"] || layout[@"name"], @"Unsupported layout type");
+	NSMutableDictionary *parsedLayout = [[NSMutableDictionary alloc] init];
+	//TODO: Add other types
+	if (layout[@"native"]) {
+		parsedLayout[@"type"] = @"Native";
+	} else if (layout[@"name"]) {
+		parsedLayout[@"type"] = @"Container";
+	}
+	
+	parsedLayout[@"data"] = layout;
+
+	//TODO: Extract into `crawler`
+	NSString *type = parsedLayout[@"type"];
+	NSString * const fromNativePrefix = @"FromNative";
+	NSString *generatedId = [NSString stringWithFormat:@"%@_%@%@", fromNativePrefix, type, [NSUUID UUID]];
+	NSMutableDictionary *crawledLayout = [parsedLayout mutableCopy];
+	crawledLayout[@"id"] = generatedId;
+	
+	[[ReactNativeNavigation sharedInstance]->_commandsHandler push:containerId layout:crawledLayout completion:nil];
+}
+
 # pragma mark - instance
 
 +(instancetype) sharedInstance {
