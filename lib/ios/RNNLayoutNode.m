@@ -41,5 +41,9 @@
 {
 	return [self.type isEqualToString:@"SideMenuCenter"];
 }
+-(BOOL)isNative
+{
+	return [self.type isEqualToString:@"Native"];
+}
 
 @end

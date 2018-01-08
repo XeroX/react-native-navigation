@@ -18,5 +18,6 @@
 -(BOOL)isSideMenuLeft;
 -(BOOL)isSideMenuRight;
 -(BOOL)isSideMenuCenter;
+-(BOOL)isNative;
 
 @end

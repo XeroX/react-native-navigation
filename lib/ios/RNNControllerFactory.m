@@ -8,6 +8,10 @@
 #import "RNNNavigationController.h"
 #import "RNNTabBarController.h"
 
+#import "ComponentViewController.h"
+//TODO: This is bad
+#import "ReactNativeNavigation.h"
+
 @implementation RNNControllerFactory {
 	id<RNNRootViewCreator> _creator;
 	RNNStore *_store;
@@ -65,6 +69,9 @@
 	}
 	else if (node.isSideMenuRight) {
 		result = [self createSideMenuChild:node type:RNNSideMenuChildTypeRight];
+	}
+	else if (node.isNative) {
+		result = [self createNativeController:node];
 	}
 	
 	if (!result) {
@@ -133,6 +140,12 @@
 	return sideMenuChild;
 }
 
+- (UIViewController *)createNativeController:(RNNLayoutNode*)node {
+	Class<ComponentViewController> controllerClass = ReactNativeNavigation.nativeScreens[node.data[@"name"]];
+	NSDictionary *props = node.data[@"passProps"];
+	
+	return [controllerClass initWithContainerId:node.nodeId andProps:props];
+}
 
 
 @end
