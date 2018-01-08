@@ -10,6 +10,7 @@
 // with npm ver 2. You'll need to "npm install" with npm 3 (see https://github.com/wix/react-native-navigation/issues/1)
 
 #import <React/RCTRootView.h>
+#import "NativeViewController.h"
 
 @implementation AppDelegate
 
@@ -19,8 +20,9 @@
 	// *** DON'T MISS: THIS IS HOW WE BOOTSTRAP *****
 	// **********************************************
 	NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
-	[ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
-	
+	[ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions nativeScreens:@{
+																								@"NativeScreen": NativeViewController.class
+																								}];
 	/*
 	// original RN bootstrap - remove this part
 	RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
