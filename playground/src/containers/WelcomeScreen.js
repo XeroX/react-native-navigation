@@ -17,6 +17,7 @@ class WelcomeScreen extends Component {
   constructor(props) {
     super(props);
     this.onClickPush = this.onClickPush.bind(this);
+    this.onClickPushNative = this.onClickPushNative.bind(this);
     this.onClickShowModal = this.onClickShowModal.bind(this);
     this.onClickLifecycleScreen = this.onClickLifecycleScreen.bind(this);
     this.onClickPushOptionsScreen = this.onClickPushOptionsScreen.bind(this);
@@ -33,6 +34,7 @@ class WelcomeScreen extends Component {
         <Button title="Switch to app with side menus" testID={testIDs.TAB_BASED_APP_SIDE_BUTTON} onPress={this.onClickSwitchToSideMenus} />
         <Button title="Push Lifecycle Screen" testID={testIDs.PUSH_LIFECYCLE_BUTTON} onPress={this.onClickLifecycleScreen} />
         <Button title="Push" testID={testIDs.PUSH_BUTTON} onPress={this.onClickPush} />
+        <Button title="Push Native" testID={testIDs.PUSH_NATIVE_BUTTON} onPress={this.onClickPushNative} />
         <Button title="Push Options Screen" testID={testIDs.PUSH_OPTIONS_BUTTON} onPress={this.onClickPushOptionsScreen} />
         <Button title="Push Top Tabs screen" testID={testIDs.PUSH_TOP_TABS_BUTTON} onPress={this.onClickPushTopTabsScreen} />
         <Button title="Back Handler" testID={testIDs.BACK_HANDLER_BUTTON} onPress={this.onClickBackHandler} />
@@ -132,6 +134,13 @@ class WelcomeScreen extends Component {
   async onClickPush() {
     await Navigation.push(this.props.containerId, {
       name: 'navigation.playground.PushedScreen'
+    });
+  }
+
+  async onClickPushNative() {
+    await Navigation.push(this.props.containerId, {
+      name: 'navigation.playground.NativeScreen',
+      isNative: true
     });
   }
 
