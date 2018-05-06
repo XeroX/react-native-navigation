@@ -122,8 +122,15 @@
 	for (NSDictionary *child in node.children) {
 		UIViewController* childVc = (UIViewController*)[self fromTree:child];
 		RNNRootViewController* rootView = (RNNRootViewController *)childVc.childViewControllers.firstObject;
-		[rootView applyTabBarItem];
 		
+		RNNLayoutNode *childNode = [RNNLayoutNode create:child[@"children"][0]];
+		if (childNode.isNative) {
+			RNNNavigationOptions *navigationOptions = [[RNNNavigationOptions alloc] initWithDict:childNode.data[@"navigationOptions"]];
+			[navigationOptions applyOn:rootView];
+		} else {
+			[rootView applyTabBarItem];
+		}
+
 		[controllers addObject:childVc];
 	}
 	[vc setViewControllers:controllers];
