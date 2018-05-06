@@ -15,10 +15,20 @@
 
 @implementation ReactNativeNavigation
 
+static NSDictionary *_nativeScreens;
+
 # pragma mark - public API
 
 +(void)bootstrap:(NSURL *)jsCodeLocation launchOptions:(NSDictionary *)launchOptions {
 	[[ReactNativeNavigation sharedInstance] bootstrap:jsCodeLocation launchOptions:launchOptions];
+}
+
++(void)registerNativeScreens:(NSDictionary *)nativeScreens {
+	_nativeScreens = nativeScreens;
+}
+
++(NSDictionary *)nativeScreens {
+	return _nativeScreens;
 }
 
 # pragma mark - instance
