@@ -51,11 +51,15 @@
 	}
 }
 
--(void) push:(NSString*)containerId layout:(NSDictionary*)layout completion:(RNNTransitionCompletionBlock)completion {
+-(void)push:(NSString*)containerId layout:(NSDictionary*)layout completion:(RNNTransitionCompletionBlock)completion {
 	[self assertReady];
 	
 	UIViewController<RNNRootViewProtocol> *newVc = [_controllerFactory createLayoutAndSaveToStore:layout];
-	[_navigationStackManager push:newVc onTop:containerId completion:completion];
+	if ([layout[@"type"] isEqualToString:@"Native"]) {
+		[_navigationStackManager pushNative:newVc onTop:containerId completion:completion];
+	} else {
+		[_navigationStackManager push:newVc onTop:containerId completion:completion];
+	}
 }
 
 -(void)pop:(NSString*)containerId options:(NSDictionary*)options completion:(RNNTransitionCompletionBlock)completion {

@@ -11,6 +11,7 @@
 
 
 -(void)push:(UIViewController<RNNRootViewProtocol>*)newTop onTop:(NSString*)containerId completion:(RNNTransitionCompletionBlock)completion;
+-(void)pushNative:(UIViewController<RNNRootViewProtocol> *)newTop onTop:(NSString *)containerId completion:(RNNTransitionCompletionBlock)completion;
 -(void)pop:(NSString*)containerId withAnimationData:(NSDictionary*)animationData;
 -(void)popTo:(NSString*)containerId;
 -(void)popToRoot:(NSString*)containerId;
