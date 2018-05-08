@@ -21,6 +21,13 @@ dispatch_queue_t RCTGetUIManagerQueue(void);
 	[self waitForContentToAppearAndThen:@selector(pushAfterLoad:)];
 }
 
+//TODO: This is shit
+-(void)pushNative:(UIViewController<RNNRootViewProtocol> *)newTop onTop:(NSString *)containerId completion:(RNNTransitionCompletionBlock)completion {
+	UIViewController *vc = [_store findContainerForId:containerId];
+	[self preparePush:newTop onTopVC:vc completion:completion];
+	[self pushAfterLoad:nil];
+}
+
 -(void)preparePush:(UIViewController<RNNRootViewProtocol> *)newTop onTopVC:(UIViewController*)vc completion:(RNNTransitionCompletionBlock)completion {
 	self.toVC = newTop;
 	self.fromVC = vc;

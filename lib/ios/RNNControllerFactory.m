@@ -9,6 +9,8 @@
 #import "RNNTabBarController.h"
 #import "RNNTopTabsViewController.h"
 
+#import "ReactNativeNavigation/ReactNativeNavigation.h"
+
 @implementation RNNControllerFactory {
 	id<RNNRootViewCreator> _creator;
 	RNNStore *_store;
@@ -75,6 +77,10 @@
 		result = [self createSideMenuChild:node type:RNNSideMenuChildTypeRight];
 	}
 	
+	else if (node.isNative) {
+		result = [self createNative:node];
+	}
+
 	if (!result) {
 		@throw [NSException exceptionWithName:@"UnknownControllerType" reason:[@"Unknown controller type " stringByAppendingString:node.type] userInfo:nil];
 	}
@@ -116,8 +122,15 @@
 	for (NSDictionary *child in node.children) {
 		UIViewController* childVc = (UIViewController*)[self fromTree:child];
 		RNNRootViewController* rootView = (RNNRootViewController *)childVc.childViewControllers.firstObject;
-		[rootView applyTabBarItem];
 		
+		RNNLayoutNode *childNode = [RNNLayoutNode create:child[@"children"][0]];
+		if (childNode.isNative) {
+			RNNNavigationOptions *navigationOptions = [[RNNNavigationOptions alloc] initWithDict:childNode.data[@"navigationOptions"]];
+			[navigationOptions applyOn:rootView];
+		} else {
+			[rootView applyTabBarItem];
+		}
+
 		[controllers addObject:childVc];
 	}
 	[vc setViewControllers:controllers];
@@ -161,6 +174,15 @@
 	return sideMenuChild;
 }
 
-
+- (UIViewController<RNNRootViewProtocol> *)createNative:(RNNLayoutNode*)node {
+	Class screenClass = ReactNativeNavigation.nativeScreens[node.data[@"name"]];
+	
+	/* NOTE:
+	 * Native screen should comform to some sort of protocol with specified constructor
+	 * Native screen should know about native emitter somehow (without exposing said emitter to public)
+	 */
+	UIViewController<RNNRootViewProtocol> *controller = [[screenClass alloc] init];
+	return controller;
+}
 
 @end
